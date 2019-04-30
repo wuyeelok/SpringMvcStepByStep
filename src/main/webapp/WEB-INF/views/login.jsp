@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>My Second JSP</h1>
+	<p>Welcome ${name}</p>
 </body>
 </html>
