@@ -13,7 +13,9 @@
 
 	<form action="/login.do" method="post">
 		<label for="name">Enter your name</label><br /> <input type="text"
-			id="name" name="name" /><br /> <input type="submit" value="Login" />
+			id="name" name="name" /><br /> <label for="password">Enter
+			your password</label><br /> <input type="password" id="password"
+			name="password" /><br /> <input type="submit" value="Login" />
 	</form>
 </body>
 </html>
