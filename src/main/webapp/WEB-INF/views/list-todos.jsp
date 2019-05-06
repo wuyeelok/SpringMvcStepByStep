@@ -9,7 +9,8 @@
 </head>
 
 <body>
-	<h1>Your Todos are ${todos}</h1>
+	<h1>Hi ${name}</h1>
+	<p>Your Todos are ${todos}</p>
 
 </body>
 </html>
