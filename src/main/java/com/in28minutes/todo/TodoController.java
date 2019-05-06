@@ -12,7 +12,7 @@ public class TodoController {
 	@Autowired
 	TodoService service;
 
-	@RequestMapping(value = "list-todos", method = RequestMethod.GET)
+	@RequestMapping(value = "/list-todos", method = RequestMethod.GET)
 	public String listTodoPage(ModelMap model) {
 
 		model.addAttribute("todos", service.retrieveTodos("tom"));
