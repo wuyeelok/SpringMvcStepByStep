@@ -10,7 +10,7 @@
 
 <body>
 	<h1>Welcome ${name}, Password is ${password}</h1>
-	<p>Now you can <a href="/list-todos?name=${name}">manage your todos.</a></p>
+	<p>Now you can <a href="/list-todos">manage your todos.</a></p>
 
 </body>
 </html>
