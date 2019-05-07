@@ -11,10 +11,27 @@
 
 <body>
 	<h1>Hi ${name}</h1>
-	<p>Your Todos are</p>
-	<c:forEach items="${todos}" var="todo">
-		${todo.id} ${todo.desc} ${todo.user}<br />
-	</c:forEach>
+
+	<table>
+		<caption>Your Todos are</caption>
+		<thead>
+			<tr>
+				<th>Description</th>
+				<th>Target Date</th>
+				<th>Is Completed?</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${todos}" var="todo">
+				<tr>
+					<td>${todo.desc}</td>
+					<td>${todo.targetDate}</td>
+					<td>${todo.done}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+
 
 	<br />
 	<a href="/add-todo">Add</a>
