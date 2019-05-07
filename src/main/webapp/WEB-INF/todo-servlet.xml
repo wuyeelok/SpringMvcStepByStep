@@ -10,6 +10,7 @@
 		base-package="com.in28minutes" />
 
 	<mvc:resources location="/webjars/" mapping="/webjars/**" />
+	<mvc:resources location="/assets/" mapping="/assets/**" />
 
 	<mvc:annotation-driven />
 

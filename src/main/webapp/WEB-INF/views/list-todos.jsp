@@ -11,36 +11,41 @@
 
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/app.css">
 
 <title>List Todos JSP</title>
 </head>
 
 <body>
-	<h1>Hi ${name}</h1>
+	<div class="container">
+		<h1>Hi ${name}</h1>
 
-	<table>
-		<caption>Your Todos are</caption>
-		<thead>
-			<tr>
-				<th>Description</th>
-				<th>Target Date</th>
-				<th>Is Completed?</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${todos}" var="todo">
+		<table class="table table-striped">
+			<caption>Your Todos are</caption>
+			<thead>
 				<tr>
-					<td>${todo.desc}</td>
-					<td>${todo.targetDate}</td>
-					<td>${todo.done}</td>
+					<th>Description</th>
+					<th>Target Date</th>
+					<th>Is Completed?</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach items="${todos}" var="todo">
+					<tr>
+						<td>${todo.desc}</td>
+						<td>${todo.targetDate}</td>
+						<td>${todo.done}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
 
-	<br />
-	<a href="/add-todo">Add</a>
+		<div>
+			<a class="btn btn-success" href="/add-todo">Add</a>
+		</div>
+
+	</div>
 
 	<script src="webjars/jquery/3.4.1/jquery.slim.min.js"></script>
 	<script src="webjars/popper.js/1.15.0/umd/popper.min.js"></script>
