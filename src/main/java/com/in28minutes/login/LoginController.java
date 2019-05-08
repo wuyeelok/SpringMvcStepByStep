@@ -17,7 +17,7 @@ public class LoginController {
 	@Autowired
 	UserValidationService service;
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String showLoginPage(HttpServletRequest request, ModelMap model) {
 
 		String requestServletContextPath = request.getServletContext().getContextPath();
@@ -33,7 +33,7 @@ public class LoginController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String handleLoginRequest(@RequestParam String name, @RequestParam String password, ModelMap model) {
 
 		boolean isUserValid = service.isUserValid(name, password);

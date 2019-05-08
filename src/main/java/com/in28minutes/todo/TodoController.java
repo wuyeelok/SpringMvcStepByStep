@@ -19,19 +19,19 @@ public class TodoController {
 	@Autowired
 	TodoService service;
 
-	@RequestMapping(value = "/list-todos", method = RequestMethod.GET)
+	@RequestMapping(value = "list-todos", method = RequestMethod.GET)
 	public String listTodos(ModelMap model) {
 		String name = String.valueOf(model.get("name"));
 		model.addAttribute("todos", service.retrieveTodos(name));
 		return "list-todos";
 	}
 
-	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
+	@RequestMapping(value = "add-todo", method = RequestMethod.GET)
 	public String showTodoPage() {
 		return "todo";
 	}
 
-	@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
+	@RequestMapping(value = "add-todo", method = RequestMethod.POST)
 	public String addTodo(@RequestParam String desc, ModelMap model, HttpServletRequest request) {
 		service.addTodo(String.valueOf(model.get("name")), desc, new Date(), false);
 
@@ -39,7 +39,7 @@ public class TodoController {
 		return "redirect:list-todos";
 	}
 
-	@RequestMapping(value = "/delete-todo", method = RequestMethod.GET)
+	@RequestMapping(value = "delete-todo", method = RequestMethod.GET)
 	public String deleteTodo(@RequestParam int id, ModelMap model, HttpServletRequest request) {
 
 		service.deleteTodo(id);
