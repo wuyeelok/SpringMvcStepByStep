@@ -11,7 +11,7 @@
 
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/app.css">
 
 <title>List Todos JSP</title>
 </head>
