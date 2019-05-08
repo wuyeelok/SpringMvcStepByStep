@@ -1,5 +1,7 @@
 package com.in28minutes.login;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,7 +18,14 @@ public class LoginController {
 	UserValidationService service;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String showLoginPage() {
+	public String showLoginPage(HttpServletRequest request, ModelMap model) {
+
+		String requestServletContextPath = request.getServletContext().getContextPath();
+		String requestServletPath = request.getServletPath();
+
+		model.put("requestServletContextPath", requestServletContextPath);
+		model.put("requestServletPath", requestServletPath);
+
 		return "login";
 	}
 

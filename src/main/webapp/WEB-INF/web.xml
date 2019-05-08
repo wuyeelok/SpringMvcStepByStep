@@ -23,6 +23,11 @@
 
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/springurlpattern/*</url-pattern>
     </servlet-mapping>
+    
+    <context-param>
+		<param-name>companyName</param-name>
+		<param-value>Test Organization, Incorporated</param-value>
+	</context-param>
 </web-app>

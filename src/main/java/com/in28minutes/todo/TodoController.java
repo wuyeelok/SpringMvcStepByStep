@@ -2,6 +2,8 @@ package com.in28minutes.todo;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -30,10 +32,23 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
-	public String addTodo(@RequestParam String desc, ModelMap model) {
+	public String addTodo(@RequestParam String desc, ModelMap model, HttpServletRequest request) {
 		service.addTodo(String.valueOf(model.get("name")), desc, new Date(), false);
 
+		String requestServletPath = request.getServletPath();
+
 		model.clear();
-		return "redirect:/list-todos";
+		return "redirect:" + requestServletPath + "/list-todos";
+	}
+
+	@RequestMapping(value = "/delete-todo", method = RequestMethod.GET)
+	public String deleteTodo(@RequestParam int id, ModelMap model, HttpServletRequest request) {
+
+		service.deleteTodo(id);
+
+		String requestServletPath = request.getServletPath();
+
+		model.clear();
+		return "redirect:" + requestServletPath + "/list-todos";
 	}
 };
