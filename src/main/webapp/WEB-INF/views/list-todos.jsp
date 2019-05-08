@@ -37,7 +37,7 @@
 						<td>${todo.desc}</td>
 						<td>${todo.targetDate}</td>
 						<td>${todo.done}</td>
-						<td><a href="${pageContext.request.contextPath}${requestScope['javax.servlet.forward.servlet_path']}/delete-todo?id=${todo.id}"
+						<td><a href="delete-todo?id=${todo.id}"
 							class="btn btn-danger">Delete</a></td>
 					</tr>
 				</c:forEach>
@@ -46,7 +46,7 @@
 
 
 		<div>
-			<a class="btn btn-success" href="${pageContext.request.contextPath}${requestScope['javax.servlet.forward.servlet_path']}/add-todo">Add</a>
+			<a class="btn btn-success" href="add-todo">Add</a>
 		</div>
 
 	</div>

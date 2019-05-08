@@ -35,10 +35,8 @@ public class TodoController {
 	public String addTodo(@RequestParam String desc, ModelMap model, HttpServletRequest request) {
 		service.addTodo(String.valueOf(model.get("name")), desc, new Date(), false);
 
-		String requestServletPath = request.getServletPath();
-
 		model.clear();
-		return "redirect:" + requestServletPath + "/list-todos";
+		return "redirect:list-todos";
 	}
 
 	@RequestMapping(value = "/delete-todo", method = RequestMethod.GET)
@@ -46,9 +44,7 @@ public class TodoController {
 
 		service.deleteTodo(id);
 
-		String requestServletPath = request.getServletPath();
-
 		model.clear();
-		return "redirect:" + requestServletPath + "/list-todos";
+		return "redirect:list-todos";
 	}
 };

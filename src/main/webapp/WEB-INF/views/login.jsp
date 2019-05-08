@@ -20,18 +20,16 @@
 	<div class="container">
 		<h1>My Second JSP</h1>
 		<p>${errorMessage}</p>
-		<form
-			action="${pageContext.request.contextPath}${requestScope['javax.servlet.forward.servlet_path']}/login"
-			method="post">
+		<form action="login" method="post">
 			<label for="name">Enter your name</label><br /> <input type="text"
 				id="name" name="name" /><br /> <label for="password">Enter
 				your password</label><br /> <input type="password" id="password"
-				name="password" /><br />
-			<br /> <input type="submit" value="Login" />
+				name="password" /><br /> <br /> <input type="submit"
+				value="Login" />
 		</form>
 		<br />
 		<table class="table table-striped">
-			<caption>Important Config Info</caption>
+			<caption>Some Interesting Effect to Remind you to use Relative Path</caption>
 			<thead>
 				<tr>
 					<td>Name</td>
@@ -53,6 +51,18 @@
 					<td>web.xml</td>
 					<td>request.getServletPath()</td>
 					<td>${requestServletPath}</td>
+				</tr>
+				<tr>
+					<td>Request URL</td>
+					<td>n/a</td>
+					<td>request.getRequestURL().toString()</td>
+					<td>${requestURL}</td>
+				</tr>
+				<tr>
+					<td>Request pathInfo</td>
+					<td>n/a</td>
+					<td>request.getPathInfo()</td>
+					<td>${pathInfo}</td>
 				</tr>
 			</tbody>
 		</table>

@@ -22,9 +22,13 @@ public class LoginController {
 
 		String requestServletContextPath = request.getServletContext().getContextPath();
 		String requestServletPath = request.getServletPath();
+		String requestURL = request.getRequestURL().toString();
+		String pathInfo = request.getPathInfo();
 
 		model.put("requestServletContextPath", requestServletContextPath);
 		model.put("requestServletPath", requestServletPath);
+		model.put("requestURL", requestURL);
+		model.put("pathInfo", pathInfo);
 
 		return "login";
 	}
