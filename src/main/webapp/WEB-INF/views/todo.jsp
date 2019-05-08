@@ -20,7 +20,7 @@
 		<form method="post">
 			<fieldset class="form-group">
 				<label for="desc">Description</label> <input class="form-control"
-					id="desc" name="desc" type="text" />
+					id="desc" name="desc" type="text" required="required" />
 			</fieldset>
 			<input class="btn btn-success" type="submit" value="Add" />
 		</form>
