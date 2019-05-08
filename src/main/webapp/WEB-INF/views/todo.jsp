@@ -9,7 +9,11 @@
 <body>
 	<h1>Add a Todo</h1>
 	<form method="post">
-		<input name="desc" type="text" /> <input type="submit" value="Add" />
+		<fieldset>
+			<label for="desc">Description</label> <input id="desc" name="desc"
+				type="text" />
+		</fieldset>
+		<input type="submit" value="Add" />
 	</form>
 </body>
 </html>
