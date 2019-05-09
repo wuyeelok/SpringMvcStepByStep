@@ -2,8 +2,6 @@ package com.in28minutes.todo;
 
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,7 +31,7 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "add-todo", method = RequestMethod.POST)
-	public String addTodo(@RequestParam String desc, ModelMap model, HttpServletRequest request) {
+	public String addTodo(@RequestParam String desc, ModelMap model) {
 		service.addTodo(String.valueOf(model.get("name")), desc, new Date(), false);
 
 		model.clear();
@@ -41,7 +39,7 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "delete-todo", method = RequestMethod.GET)
-	public String deleteTodo(@RequestParam int id, ModelMap model, HttpServletRequest request) {
+	public String deleteTodo(@RequestParam int id, ModelMap model) {
 
 		service.deleteTodo(id);
 
