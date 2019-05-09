@@ -31,8 +31,8 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "add-todo", method = RequestMethod.POST)
-	public String addTodo(@RequestParam String desc, ModelMap model) {
-		service.addTodo(String.valueOf(model.get("name")), desc, new Date(), false);
+	public String addTodo(Todo todo, ModelMap model) {
+		service.addTodo(String.valueOf(model.get("name")), todo.getDesc(), new Date(), false);
 
 		model.clear();
 		return "redirect:list-todos";
