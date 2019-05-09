@@ -18,10 +18,11 @@
 <body>
 	<div class="container">
 		<h1>Add a Todo</h1>
-		<form:form method="post">
+		<form:form method="post" commandName="todo">
 			<fieldset class="form-group">
-				<label for="desc">Description</label> <input class="form-control"
-					id="desc" name="desc" type="text" required="required" />
+				<form:label path="desc">Description</form:label>
+				<form:input path="desc" class="form-control" type="text"
+					required="required" />
 			</fieldset>
 			<input class="btn btn-success" type="submit" value="Add" />
 		</form:form>
