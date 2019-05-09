@@ -46,6 +46,13 @@ public class TodoController {
 		}
 	}
 
+	@RequestMapping(value = "edit-todo", method = RequestMethod.GET)
+	public String editTodo(ModelMap model, @RequestParam int id) {
+		Todo selectedTodo = service.retrieveTodo(id);
+		model.put("todo", selectedTodo);
+		return "todo";
+	}
+
 	@RequestMapping(value = "delete-todo", method = RequestMethod.GET)
 	public String deleteTodo(@RequestParam int id, ModelMap model) {
 

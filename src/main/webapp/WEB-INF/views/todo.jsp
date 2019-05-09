@@ -25,7 +25,7 @@
 					required="required" />
 				<form:errors path="desc" cssClass="text-warning" />
 			</fieldset>
-			<input class="btn btn-success" type="submit" value="Add" />
+			<input class="btn btn-success" type="submit" value="Submit" />
 		</form:form>
 	</div>
 
