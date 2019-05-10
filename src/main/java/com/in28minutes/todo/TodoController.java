@@ -49,7 +49,7 @@ public class TodoController {
 		if (result.hasErrors()) {
 			return "todo";
 		} else {
-			service.addTodo(String.valueOf(model.get("name")), todo.getDesc(), new Date(), false);
+			service.addTodo(String.valueOf(model.get("name")), todo.getDesc(), todo.getTargetDate(), false);
 
 			model.clear();
 			return "redirect:list-todos";
