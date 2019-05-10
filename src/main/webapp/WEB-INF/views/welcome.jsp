@@ -1,18 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ include file="common/header.jspf"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Welcome JSP</title>
-</head>
+<div class="container">
 
-<body>
+	<%@ include file="common/navigation.jspf"%>
+
 	<h1>Welcome ${name}, Password is ${password}</h1>
 	<p>
 		Now you can <a href="list-todos">manage your todos.</a>
 	</p>
+</div>
 
-</body>
-</html>
+<%@ include file="common/footer.jspf"%>
