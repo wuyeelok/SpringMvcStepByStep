@@ -30,6 +30,8 @@ public class LoginController {
 		model.put("requestURL", requestURL);
 		model.put("pathInfo", pathInfo);
 
+		model.put("loginJSPActive", "active");
+
 		return "login";
 	}
 
@@ -40,9 +42,12 @@ public class LoginController {
 		if (isUserValid) {
 			model.put("name", name);
 			model.put("password", password);
+
 			return "welcome";
 		} else {
 			model.put("errorMessage", "Invalid login!");
+			model.put("loginJSPActive", "active");
+
 			return "login";
 		}
 
