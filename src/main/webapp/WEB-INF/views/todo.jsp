@@ -28,6 +28,13 @@
 					required="required" />
 				<form:errors path="desc" cssClass="text-warning" />
 			</fieldset>
+
+			<fieldset class="form-group">
+				<form:label path="targetDate">Target Date</form:label>
+				<form:input path="targetDate" class="form-control" type="text"
+					required="required" />
+				<form:errors path="targetDate" cssClass="text-warning" />
+			</fieldset>
 			<input class="btn btn-success" type="submit" value="Submit" />
 		</form:form>
 	</div>
