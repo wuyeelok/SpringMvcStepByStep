@@ -24,6 +24,10 @@ public class TodoController {
 	@Autowired
 	TodoService service;
 
+	private String retrieveLoggedinUserName() {
+		return "tom";
+	}
+
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -32,8 +36,7 @@ public class TodoController {
 
 	@RequestMapping(value = "list-todos", method = RequestMethod.GET)
 	public String listTodos(ModelMap model) {
-		String name = String.valueOf(model.get("name"));
-		model.addAttribute("todos", service.retrieveTodos(name));
+		model.addAttribute("todos", service.retrieveTodos(retrieveLoggedinUserName()));
 
 		model.put("listTodosJSPActive", "active");
 
@@ -42,7 +45,7 @@ public class TodoController {
 
 	@RequestMapping(value = "add-todo", method = RequestMethod.GET)
 	public String showTodoPage(ModelMap model) {
-		model.addAttribute("todo", new Todo(0, String.valueOf(model.get("name")), "", new Date(), false));
+		model.addAttribute("todo", new Todo(0, retrieveLoggedinUserName(), "", new Date(), false));
 
 		model.put("todoJSPActive", "active");
 
@@ -57,7 +60,7 @@ public class TodoController {
 
 			return "todo";
 		} else {
-			service.addTodo(String.valueOf(model.get("name")), todo.getDesc(), todo.getTargetDate(), false);
+			service.addTodo(retrieveLoggedinUserName(), todo.getDesc(), todo.getTargetDate(), false);
 
 			model.clear();
 			return "redirect:list-todos";
@@ -78,7 +81,7 @@ public class TodoController {
 
 			return "todo";
 		} else {
-			todo.setUser(String.valueOf(model.get("name")));
+			todo.setUser(retrieveLoggedinUserName());
 			service.updateTodo(todo);
 
 			model.clear();
