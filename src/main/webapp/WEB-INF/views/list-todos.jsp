@@ -23,9 +23,9 @@
 					<td><fmt:formatDate pattern="dd/MM/yyyy"
 							value="${todo.targetDate}" /></td>
 					<td>${todo.done}</td>
-					<td><a href="update-todo?id=${todo.id}"
+					<td><a href="${pageContext.request.contextPath}${springDispatcherURLPattern}/update-todo?id=${todo.id}"
 						class="btn btn-warning">Edit</a> <a
-						href="delete-todo?id=${todo.id}" class="btn btn-danger">Delete</a></td>
+						href="${pageContext.request.contextPath}${springDispatcherURLPattern}/delete-todo?id=${todo.id}" class="btn btn-danger">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -33,7 +33,7 @@
 
 
 	<div>
-		<a class="btn btn-success" href="add-todo">Add</a>
+		<a class="btn btn-success" href="${pageContext.request.contextPath}${springDispatcherURLPattern}/add-todo">Add</a>
 	</div>
 
 </div>

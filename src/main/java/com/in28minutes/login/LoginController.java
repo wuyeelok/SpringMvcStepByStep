@@ -10,14 +10,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.in28minutes.config.ConfigUtilService;
+
 @Controller
-@SessionAttributes("name")
+@SessionAttributes({ "name", "springDispatcherURLPattern" })
 public class LoginController {
 
 	@Autowired
 	UserValidationService service;
 
-	@RequestMapping(value = "login", method = RequestMethod.GET)
+	@Autowired
+	ConfigUtilService configUtilService;
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showLoginPage(HttpServletRequest request, ModelMap model) {
 
 		String requestServletContextPath = request.getServletContext().getContextPath();
@@ -31,6 +36,8 @@ public class LoginController {
 		model.put("pathInfo", pathInfo);
 
 		model.put("loginJSPActive", "active");
+
+		model.put("springDispatcherURLPattern", configUtilService.getSpringDispatcherURLPattern());
 
 		return "login";
 	}

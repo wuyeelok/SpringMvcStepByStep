@@ -12,8 +12,10 @@ public class ConfigUtilService {
 
 		String urlPattern = rb.getString("DispatcherServletUrlPattern");
 
-		if (urlPattern.endsWith("*")) {
-			return (urlPattern.substring(0, urlPattern.length() - 1));
+		if ("/".equals(urlPattern)) {
+			return "";
+		} else if (urlPattern.endsWith("/*")) {
+			return (urlPattern.substring(0, urlPattern.length() - 2));
 		}
 
 		return urlPattern;
