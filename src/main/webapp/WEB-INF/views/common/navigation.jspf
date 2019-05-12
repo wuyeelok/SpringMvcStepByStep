@@ -20,5 +20,9 @@
 				href="${pageContext.request.contextPath}${springDispatcherURLPattern}/add-todo">Add
 					Todo</a></li>
 		</ul>
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link"
+				href="${pageContext.request.contextPath}${springDispatcherURLPattern}/logout">Logout</a></li>
+		</ul>
 	</div>
 </nav>

@@ -1,7 +1,5 @@
 package com.in28minutes.login;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,7 +21,7 @@ public class WelcomeController {
 	SecurityUtilService securityUtilService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String showWelcomePage(HttpServletRequest request, ModelMap model) {
+	public String showWelcomePage(ModelMap model) {
 
 		model.put("welcomeJSPActive", "active");
 
