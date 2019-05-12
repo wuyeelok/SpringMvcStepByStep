@@ -18,15 +18,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("tom").password("abcd").roles("USER", "ADMIN");
+		auth.inMemoryAuthentication().withUser("in28Minutes").password("dummy").roles("USER", "ADMIN");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		String springDispatcherURLPattern = configUtilService.getSpringDispatcherURLPattern();
-
-		http.authorizeRequests().antMatchers("/login").permitAll()
-				.antMatchers(springDispatcherURLPattern + "/", springDispatcherURLPattern + "/*todo*/**")
+		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/", "/*todo*/**")
 				.access("hasRole('USER')").and().formLogin();
 	}
 

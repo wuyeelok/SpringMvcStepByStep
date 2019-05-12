@@ -25,7 +25,7 @@ public class WelcomeController {
 
 		model.put("springDispatcherURLPattern", configUtilService.getSpringDispatcherURLPattern());
 
-		model.put("name", "tom");
+		model.put("name", "in28Minutes");
 
 		return "welcome";
 	}

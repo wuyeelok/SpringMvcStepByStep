@@ -25,7 +25,7 @@ public class TodoController {
 	TodoService service;
 
 	private String retrieveLoggedinUserName() {
-		return "tom";
+		return "in28Minutes";
 	}
 
 	@InitBinder
