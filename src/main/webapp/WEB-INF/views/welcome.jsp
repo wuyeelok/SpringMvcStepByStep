@@ -4,9 +4,11 @@
 
 	<%@ include file="common/navigation.jspf"%>
 
-	<h1>Welcome ${name}, Password is ${password}</h1>
+	<h1>Welcome ${name}</h1>
 	<p>
-		Now you can <a href="${pageContext.request.contextPath}${springDispatcherURLPattern}/list-todos">manage your todos.</a>
+		Now you can <a
+			href="${pageContext.request.contextPath}${springDispatcherURLPattern}/list-todos">manage
+			your todos.</a>
 	</p>
 </div>
 

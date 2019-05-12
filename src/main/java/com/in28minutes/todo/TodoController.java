@@ -18,9 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.in28minutes.config.ConfigUtilService;
+import com.in28minutes.security.SecurityUtilService;
 
 @Controller
-@SessionAttributes({ "name", "springDispatcherURLPattern" })
+@SessionAttributes({ "springDispatcherURLPattern" })
 public class TodoController {
 
 	@Autowired
@@ -29,9 +30,8 @@ public class TodoController {
 	@Autowired
 	ConfigUtilService configUtilService;
 
-	private String retrieveLoggedinUserName() {
-		return "tom";
-	}
+	@Autowired
+	SecurityUtilService securityUtilService;
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -41,18 +41,20 @@ public class TodoController {
 
 	@RequestMapping(value = "list-todos", method = RequestMethod.GET)
 	public String listTodos(ModelMap model) {
-		model.addAttribute("todos", service.retrieveTodos(retrieveLoggedinUserName()));
+		model.addAttribute("todos", service.retrieveTodos(securityUtilService.retrieveLoggedinUserName()));
 
 		model.put("listTodosJSPActive", "active");
 
 		model.put("springDispatcherURLPattern", configUtilService.getSpringDispatcherURLPattern());
+
+		model.put("name", securityUtilService.retrieveLoggedinUserName());
 
 		return "list-todos";
 	}
 
 	@RequestMapping(value = "add-todo", method = RequestMethod.GET)
 	public String showTodoPage(ModelMap model) {
-		model.addAttribute("todo", new Todo(0, retrieveLoggedinUserName(), "", new Date(), false));
+		model.addAttribute("todo", new Todo(0, securityUtilService.retrieveLoggedinUserName(), "", new Date(), false));
 
 		model.put("todoJSPActive", "active");
 
@@ -69,7 +71,8 @@ public class TodoController {
 
 			return "todo";
 		} else {
-			service.addTodo(retrieveLoggedinUserName(), todo.getDesc(), todo.getTargetDate(), false);
+			service.addTodo(securityUtilService.retrieveLoggedinUserName(), todo.getDesc(), todo.getTargetDate(),
+					false);
 
 			model.clear();
 			return "redirect:list-todos";
@@ -92,7 +95,7 @@ public class TodoController {
 
 			return "todo";
 		} else {
-			todo.setUser(retrieveLoggedinUserName());
+			todo.setUser(securityUtilService.retrieveLoggedinUserName());
 			service.updateTodo(todo);
 
 			model.clear();

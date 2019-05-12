@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.in28minutes.config.ConfigUtilService;
+import com.in28minutes.security.SecurityUtilService;
 
 @Controller
 @SessionAttributes({ "springDispatcherURLPattern" })
@@ -18,6 +19,9 @@ public class WelcomeController {
 	@Autowired
 	ConfigUtilService configUtilService;
 
+	@Autowired
+	SecurityUtilService securityUtilService;
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showWelcomePage(HttpServletRequest request, ModelMap model) {
 
@@ -25,7 +29,7 @@ public class WelcomeController {
 
 		model.put("springDispatcherURLPattern", configUtilService.getSpringDispatcherURLPattern());
 
-		model.put("name", "tom");
+		model.put("name", securityUtilService.retrieveLoggedinUserName());
 
 		return "welcome";
 	}
