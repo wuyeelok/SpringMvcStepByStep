@@ -17,12 +17,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.in28minutes.config.ConfigUtilService;
+
 @Controller
-@SessionAttributes("name")
+@SessionAttributes({ "name", "springDispatcherURLPattern" })
 public class TodoController {
 
 	@Autowired
 	TodoService service;
+
+	@Autowired
+	ConfigUtilService configUtilService;
 
 	private String retrieveLoggedinUserName() {
 		return "tom";
@@ -40,6 +45,8 @@ public class TodoController {
 
 		model.put("listTodosJSPActive", "active");
 
+		model.put("springDispatcherURLPattern", configUtilService.getSpringDispatcherURLPattern());
+
 		return "list-todos";
 	}
 
@@ -48,6 +55,8 @@ public class TodoController {
 		model.addAttribute("todo", new Todo(0, retrieveLoggedinUserName(), "", new Date(), false));
 
 		model.put("todoJSPActive", "active");
+
+		model.put("springDispatcherURLPattern", configUtilService.getSpringDispatcherURLPattern());
 
 		return "todo";
 	}
@@ -71,6 +80,8 @@ public class TodoController {
 	public String updateTodo(ModelMap model, @RequestParam int id) {
 		Todo todo = service.retrieveTodo(id);
 		model.put("todo", todo);
+
+		model.put("springDispatcherURLPattern", configUtilService.getSpringDispatcherURLPattern());
 
 		return "todo";
 	}
