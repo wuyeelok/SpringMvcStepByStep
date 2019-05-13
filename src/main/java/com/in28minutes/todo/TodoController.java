@@ -3,14 +3,18 @@ package com.in28minutes.todo;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,11 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.in28minutes.config.ConfigUtilService;
+import com.in28minutes.exception.ExceptionController;
 import com.in28minutes.security.SecurityUtilService;
 
 @Controller
 @SessionAttributes({ "springDispatcherURLPattern" })
 public class TodoController {
+
+	private Log logger = LogFactory.getLog(ExceptionController.class);
 
 	@Autowired
 	TodoService service;
@@ -109,5 +116,12 @@ public class TodoController {
 
 		model.clear();
 		return "redirect:list-todos";
+	}
+
+	@ExceptionHandler(value = Exception.class)
+	public String handleException(HttpServletRequest request, Exception ex) {
+		logger.error("Request " + request.getRequestURL() + "Threw an Exceiption", ex);
+
+		return "error-todo-specific";
 	}
 };
