@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		String springDispatcherURLPattern = configUtilService.getSpringDispatcherURLPattern();
 
-		http.authorizeRequests().antMatchers("/login").permitAll()
+		http.authorizeRequests().antMatchers("/login", springDispatcherURLPattern + "/show-all-t").permitAll()
 				.antMatchers(springDispatcherURLPattern + "/", springDispatcherURLPattern + "/*todo*/**")
 				.access("hasRole('USER')").and().formLogin();
 	}
