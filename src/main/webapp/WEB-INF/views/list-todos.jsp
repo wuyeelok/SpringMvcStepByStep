@@ -7,7 +7,7 @@
 	<h1>Hi ${name}</h1>
 
 	<table class="table table-striped">
-		<caption>Your Todos are</caption>
+		<caption><spring:message code="todo.caption"/></caption>
 		<thead>
 			<tr>
 				<th>Description</th>

@@ -4,7 +4,10 @@
 
 	<%@ include file="common/navigation.jspf"%>
 
-	<h1>Welcome ${name}</h1>
+	<h1>
+		<spring:message code="welcome.caption" />
+		${name}
+	</h1>
 	<p>
 		Now you can <a
 			href="${pageContext.request.contextPath}${springDispatcherURLPattern}/list-todos">manage
