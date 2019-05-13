@@ -4,10 +4,14 @@
 
 	<%@ include file="common/navigation.jspf"%>
 
-	<h1>Hi ${name}</h1>
+	<h1>
+		<spring:message code="hi.h1" />! ${name}
+	</h1>
 
 	<table class="table table-striped">
-		<caption><spring:message code="todo.caption"/></caption>
+		<caption>
+			<spring:message code="todo.caption" />
+		</caption>
 		<thead>
 			<tr>
 				<th>Description</th>
@@ -23,9 +27,11 @@
 					<td><fmt:formatDate pattern="dd/MM/yyyy"
 							value="${todo.targetDate}" /></td>
 					<td>${todo.done}</td>
-					<td><a href="${pageContext.request.contextPath}${springDispatcherURLPattern}/update-todo?id=${todo.id}"
+					<td><a
+						href="${pageContext.request.contextPath}${springDispatcherURLPattern}/update-todo?id=${todo.id}"
 						class="btn btn-warning">Edit</a> <a
-						href="${pageContext.request.contextPath}${springDispatcherURLPattern}/delete-todo?id=${todo.id}" class="btn btn-danger">Delete</a></td>
+						href="${pageContext.request.contextPath}${springDispatcherURLPattern}/delete-todo?id=${todo.id}"
+						class="btn btn-danger">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -33,7 +39,8 @@
 
 
 	<div>
-		<a class="btn btn-success" href="${pageContext.request.contextPath}${springDispatcherURLPattern}/add-todo">Add</a>
+		<a class="btn btn-success"
+			href="${pageContext.request.contextPath}${springDispatcherURLPattern}/add-todo">Add</a>
 	</div>
 
 </div>
